@@ -1,0 +1,1249 @@
+{
+  "software_version": "1.2.0",
+  "schedule": {
+    "expected_period_count": 8,
+    "warmup": {
+      "start_year": 1,
+      "end_year": 4
+    },
+    "water_quality_storage_mapping": {
+      "Reservoir_A": "R1",
+      "Reservoir_B": "R2"
+    },
+    "expected_years_per_period": 5,
+    "demand_basis": "monthly_mean",
+    "quality_scenario": "baseline",
+    "periods": [
+      {
+        "label": "P1",
+        "start_year": 5,
+        "end_year": 9
+      },
+      {
+        "label": "P2",
+        "start_year": 10,
+        "end_year": 14
+      },
+      {
+        "label": "P3",
+        "start_year": 15,
+        "end_year": 19
+      },
+      {
+        "label": "P4",
+        "start_year": 20,
+        "end_year": 24
+      },
+      {
+        "label": "P5",
+        "start_year": 25,
+        "end_year": 29
+      },
+      {
+        "label": "P6",
+        "start_year": 30,
+        "end_year": 34
+      },
+      {
+        "label": "P7",
+        "start_year": 35,
+        "end_year": 39
+      },
+      {
+        "label": "P8",
+        "start_year": 40,
+        "end_year": 44
+      }
+    ],
+    "demand_seasonality": {
+      "1": 0.8,
+      "2": 0.8,
+      "3": 0.9,
+      "4": 1.0,
+      "5": 1.1,
+      "6": 1.2,
+      "7": 1.2,
+      "8": 1.2,
+      "9": 1.1,
+      "10": 1.0,
+      "11": 0.9,
+      "12": 0.8
+    },
+    "water_quality_flow_mapping": [
+      {
+        "node": "Reach_A",
+        "reservoir": "R1",
+        "field": "natural_inflow"
+      },
+      {
+        "node": "Reservoir_A",
+        "reservoir": "R1",
+        "field": "release"
+      },
+      {
+        "node": "Reach_B",
+        "reservoir": "R2",
+        "field": [
+          "natural_inflow",
+          "upstream_release"
+        ]
+      },
+      {
+        "node": "Reservoir_B",
+        "reservoir": "R2",
+        "field": "release"
+      }
+    ],
+    "dynamic_point_source_positions_km": {
+      "Reach_A": 4.0,
+      "Reach_B": 5.0
+    }
+  },
+  "model": {
+    "initial_shape_factors": {
+      "water_supply": 0.3333333333333333,
+      "hydropower": 0.3333333333333333,
+      "environment": 0.3333333333333333
+    },
+    "ecological_membership": {
+      "method": "continuous_quartiles"
+    },
+    "satisfaction_thresholds": {
+      "water_supply": 0.85,
+      "hydropower": 0.42,
+      "ecological_flow": 0.25,
+      "water_quality_grade": 3.0
+    },
+    "feedback": {
+      "maximum_adjustment": 0.2,
+      "steepness": 5.0
+    },
+    "reservoirs": {
+      "R1": {
+        "downstream": "R2",
+        "dead_storage": 10.0,
+        "max_storage": 100.0,
+        "initial_storage": 55.0,
+        "max_release": 60.0,
+        "min_release": 0.1,
+        "turbine_capacity": 20.0,
+        "efficiency": 0.9,
+        "installed_power_mw": 3.0,
+        "energy_target_mwh": 640.0,
+        "transfer_out_max": 4.0,
+        "transfer_in_max": 0.0,
+        "capacity_curve": [
+          [
+            100.0,
+            10.0
+          ],
+          [
+            110.0,
+            55.0
+          ],
+          [
+            120.0,
+            100.0
+          ]
+        ],
+        "tailwater_curve": [
+          [
+            0.0,
+            90.0
+          ],
+          [
+            15.0,
+            92.0
+          ],
+          [
+            30.0,
+            94.0
+          ]
+        ],
+        "monthly_storage": {
+          "1": [
+            10.0,
+            100.0
+          ],
+          "2": [
+            10.0,
+            100.0
+          ],
+          "3": [
+            10.0,
+            100.0
+          ],
+          "4": [
+            10.0,
+            100.0
+          ],
+          "5": [
+            10.0,
+            100.0
+          ],
+          "6": [
+            10.0,
+            100.0
+          ],
+          "7": [
+            10.0,
+            100.0
+          ],
+          "8": [
+            10.0,
+            100.0
+          ],
+          "9": [
+            10.0,
+            100.0
+          ],
+          "10": [
+            10.0,
+            100.0
+          ],
+          "11": [
+            10.0,
+            100.0
+          ],
+          "12": [
+            10.0,
+            100.0
+          ]
+        }
+      },
+      "R2": {
+        "downstream": null,
+        "dead_storage": 20.0,
+        "max_storage": 180.0,
+        "initial_storage": 90.0,
+        "max_release": 90.0,
+        "min_release": 0.1,
+        "turbine_capacity": 30.0,
+        "efficiency": 0.88,
+        "installed_power_mw": 5.0,
+        "energy_target_mwh": 980.0,
+        "transfer_out_max": 0.0,
+        "transfer_in_max": 0.0,
+        "capacity_curve": [
+          [
+            80.0,
+            20.0
+          ],
+          [
+            92.0,
+            90.0
+          ],
+          [
+            105.0,
+            180.0
+          ]
+        ],
+        "tailwater_curve": [
+          [
+            0.0,
+            70.0
+          ],
+          [
+            20.0,
+            72.0
+          ],
+          [
+            45.0,
+            75.0
+          ]
+        ],
+        "monthly_storage": {
+          "1": [
+            20.0,
+            180.0
+          ],
+          "2": [
+            20.0,
+            180.0
+          ],
+          "3": [
+            20.0,
+            180.0
+          ],
+          "4": [
+            20.0,
+            180.0
+          ],
+          "5": [
+            20.0,
+            180.0
+          ],
+          "6": [
+            20.0,
+            180.0
+          ],
+          "7": [
+            20.0,
+            180.0
+          ],
+          "8": [
+            20.0,
+            180.0
+          ],
+          "9": [
+            20.0,
+            180.0
+          ],
+          "10": [
+            20.0,
+            180.0
+          ],
+          "11": [
+            20.0,
+            180.0
+          ],
+          "12": [
+            20.0,
+            180.0
+          ]
+        }
+      }
+    }
+  },
+  "hydrology": {
+    "mode": "generated",
+    "settings": {
+      "seed": 240602,
+      "years": 44,
+      "seasonal_factors": [
+        0.65,
+        0.65,
+        0.8,
+        0.95,
+        1.1,
+        1.3,
+        1.5,
+        1.4,
+        1.15,
+        0.95,
+        0.8,
+        0.7
+      ],
+      "mean_monthly_incremental_inflow_million_m3": {
+        "R1": 30.0,
+        "R2": 18.0
+      },
+      "mean_monthly_loss_million_m3": {
+        "R1": 0.15,
+        "R2": 0.25
+      },
+      "annual_factor_range": [
+        0.7,
+        1.3
+      ],
+      "daily_lognormal_sigma": 0.4,
+      "ecological_management_grade_count": 3
+    }
+  },
+  "demand_mapping": [
+    {
+      "region": "Region_A",
+      "reservoir": "R1",
+      "weight": 0.7
+    },
+    {
+      "region": "Region_A",
+      "reservoir": "R2",
+      "weight": 0.3
+    },
+    {
+      "region": "Region_B",
+      "reservoir": "R1",
+      "weight": 0.2
+    },
+    {
+      "region": "Region_B",
+      "reservoir": "R2",
+      "weight": 0.8
+    }
+  ],
+  "pollution_mapping": [
+    {
+      "region": "Region_A",
+      "node": "Reach_A",
+      "weight": 0.8
+    },
+    {
+      "region": "Region_A",
+      "node": "Reach_B",
+      "weight": 0.2
+    },
+    {
+      "region": "Region_B",
+      "node": "Reach_A",
+      "weight": 0.3
+    },
+    {
+      "region": "Region_B",
+      "node": "Reach_B",
+      "weight": 0.7
+    }
+  ],
+  "point_loads": [
+    {
+      "month": 1,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 1,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 1,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 1,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 2,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 2,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 2,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 2,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 3,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 3,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 3,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 3,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 4,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 4,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 4,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 4,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 5,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 5,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 5,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 5,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 6,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 6,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 6,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 6,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 7,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 7,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 7,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 7,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 8,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 8,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 8,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 8,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 9,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 9,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 9,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 9,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 10,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 10,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 10,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 10,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 11,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 11,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 11,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 11,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    },
+    {
+      "month": 12,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 2.0,
+      "load_kg_month": 100
+    },
+    {
+      "month": 12,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "position_km": 6.0,
+      "load_kg_month": 80
+    },
+    {
+      "month": 12,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "position_km": 4.0,
+      "load_kg_month": 15
+    },
+    {
+      "month": 12,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "position_km": 5.0,
+      "load_kg_month": 3
+    }
+  ],
+  "nonpoint_loads": [
+    {
+      "month": 1,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 1,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 1,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 2,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 2,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 2,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 3,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 3,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 3,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 4,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 4,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 4,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 5,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 5,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 5,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 6,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 6,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 6,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 7,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 7,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 7,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 8,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 8,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 8,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 9,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 9,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 9,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 10,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 10,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 10,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 11,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 11,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 11,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    },
+    {
+      "month": 12,
+      "node": "Reach_A",
+      "pollutant": "COD",
+      "load_kg_month": 50
+    },
+    {
+      "month": 12,
+      "node": "Reach_A",
+      "pollutant": "NH3N",
+      "load_kg_month": 5
+    },
+    {
+      "month": 12,
+      "node": "Reach_B",
+      "pollutant": "TP",
+      "load_kg_month": 2
+    }
+  ],
+  "socioeconomic_state": [
+    {
+      "region": "Region_A",
+      "population": 1000,
+      "industrial_added_value": 500,
+      "irrigation_area": 200,
+      "cattle": 80,
+      "pigs": 150,
+      "poultry": 400
+    },
+    {
+      "region": "Region_B",
+      "population": 800,
+      "industrial_added_value": 420,
+      "irrigation_area": 170,
+      "cattle": 65,
+      "pigs": 120,
+      "poultry": 350
+    }
+  ],
+  "natural_growth": [
+    {
+      "region": "Region_A",
+      "population": 0.01,
+      "industrial_added_value": 0.012,
+      "irrigation_area": 0.005,
+      "cattle": 0.002,
+      "pigs": 0.003,
+      "poultry": 0.004
+    },
+    {
+      "region": "Region_B",
+      "population": 0.008,
+      "industrial_added_value": 0.01,
+      "irrigation_area": 0.004,
+      "cattle": 0.002,
+      "pigs": 0.002,
+      "poultry": 0.003
+    }
+  ],
+  "water_use_quotas": [
+    {
+      "region": "Region_A",
+      "population": 0.002,
+      "industrial_added_value": 0.01,
+      "irrigation_area": 0.02,
+      "cattle": 0.001,
+      "pigs": 0.001,
+      "poultry": 0.0005
+    },
+    {
+      "region": "Region_B",
+      "population": 0.002,
+      "industrial_added_value": 0.01,
+      "irrigation_area": 0.02,
+      "cattle": 0.001,
+      "pigs": 0.001,
+      "poultry": 0.0005
+    }
+  ],
+  "sd_parameters": {
+    "thresholds": {
+      "water_scarcity": 0.15,
+      "eco_dissatisfaction": 0.2,
+      "water_quality": 3.0
+    },
+    "pressure_steepness": {
+      "water_scarcity": 1.0,
+      "eco_dissatisfaction": 1.0,
+      "water_quality": 1.0
+    },
+    "sector_sensitivity": {
+      "population": {
+        "water_scarcity": 0.4,
+        "eco_dissatisfaction": 0.2,
+        "water_quality": 0.4
+      },
+      "industrial_added_value": {
+        "water_scarcity": 0.5,
+        "eco_dissatisfaction": 0.2,
+        "water_quality": 0.3
+      },
+      "irrigation_area": {
+        "water_scarcity": 0.6,
+        "eco_dissatisfaction": 0.2,
+        "water_quality": 0.2
+      },
+      "cattle": {
+        "water_scarcity": 0.4,
+        "eco_dissatisfaction": 0.2,
+        "water_quality": 0.4
+      },
+      "pigs": {
+        "water_scarcity": 0.4,
+        "eco_dissatisfaction": 0.2,
+        "water_quality": 0.4
+      },
+      "poultry": {
+        "water_scarcity": 0.4,
+        "eco_dissatisfaction": 0.2,
+        "water_quality": 0.4
+      }
+    },
+    "suppression_k": 0.8,
+    "gdp_impact": {
+      "population": 0.05,
+      "industrial_added_value": 0.03,
+      "irrigation_area": 0.02,
+      "cattle": 0.01,
+      "pigs": 0.01,
+      "poultry": 0.01
+    }
+  },
+  "pollution_parameters": {
+    "generation_coefficients": {
+      "COD": {
+        "population": 2.5,
+        "industrial_added_value": 8.333333333333334,
+        "irrigation_area": 1.6666666666666667,
+        "cattle": 0.8333333333333334,
+        "pigs": 0.8333333333333334,
+        "poultry": 0.16666666666666666
+      },
+      "NH3N": {
+        "population": 0.3333333333333333,
+        "industrial_added_value": 0.8333333333333334,
+        "irrigation_area": 0.24999999999999997,
+        "cattle": 0.16666666666666666,
+        "pigs": 0.16666666666666666,
+        "poultry": 0.041666666666666664
+      },
+      "TP": {
+        "population": 0.02666666666666667,
+        "industrial_added_value": 0.05333333333333334,
+        "irrigation_area": 0.05333333333333334,
+        "cattle": 0.02666666666666667,
+        "pigs": 0.02666666666666667,
+        "poultry": 0.008
+      }
+    },
+    "removal_rates": {
+      "COD": {
+        "population": 0.7,
+        "industrial_added_value": 0.7,
+        "irrigation_area": 0.7,
+        "cattle": 0.7,
+        "pigs": 0.7,
+        "poultry": 0.7
+      },
+      "NH3N": {
+        "population": 0.65,
+        "industrial_added_value": 0.65,
+        "irrigation_area": 0.65,
+        "cattle": 0.65,
+        "pigs": 0.65,
+        "poultry": 0.65
+      },
+      "TP": {
+        "population": 0.55,
+        "industrial_added_value": 0.55,
+        "irrigation_area": 0.55,
+        "cattle": 0.55,
+        "pigs": 0.55,
+        "poultry": 0.55
+      }
+    }
+  },
+  "water_quality_network": {
+    "reaches": [
+      {
+        "node": "Reach_A",
+        "downstream": "Reservoir_A",
+        "length_km": 8.0,
+        "width_m": 40.0,
+        "depth_m": 2.0,
+        "slope": 0.001,
+        "manning_n": 0.035,
+        "decay_per_day": {
+          "COD": 0.08,
+          "NH3N": 0.05,
+          "TP": 0.01
+        },
+        "background_mg_l": {
+          "COD": 10.0,
+          "NH3N": 0.3,
+          "TP": 0.02
+        }
+      },
+      {
+        "node": "Reach_B",
+        "downstream": "Reservoir_B",
+        "length_km": 10.0,
+        "width_m": 55.0,
+        "depth_m": 2.5,
+        "slope": 0.0008,
+        "manning_n": 0.038,
+        "decay_per_day": {
+          "COD": 0.06,
+          "NH3N": 0.04,
+          "TP": 0.008
+        },
+        "background_mg_l": {
+          "COD": 10.0,
+          "NH3N": 0.3,
+          "TP": 0.02
+        }
+      }
+    ],
+    "reservoirs": [
+      {
+        "node": "Reservoir_A",
+        "downstream": "Reach_B",
+        "volume_m3": 55000000.0,
+        "decay_per_day": {
+          "COD": 0.02,
+          "NH3N": 0.015,
+          "TP": 0.003
+        }
+      },
+      {
+        "node": "Reservoir_B",
+        "downstream": null,
+        "volume_m3": 90000000.0,
+        "decay_per_day": {
+          "COD": 0.02,
+          "NH3N": 0.015,
+          "TP": 0.003
+        }
+      }
+    ]
+  },
+  "quality_scenarios": {
+    "conditions": {
+      "baseline": {
+        "Reach_A": {
+          "COD": 10.0,
+          "NH3N": 0.3,
+          "TP": 0.02
+        }
+      },
+      "pressure": {
+        "Reach_A": {
+          "COD": 24.0,
+          "NH3N": 1.3,
+          "TP": 0.08
+        }
+      }
+    },
+    "scenarios": {
+      "baseline": {
+        "P1": "baseline",
+        "P2": "baseline",
+        "P3": "baseline",
+        "P4": "baseline",
+        "P5": "baseline",
+        "P6": "baseline",
+        "P7": "baseline",
+        "P8": "baseline"
+      },
+      "stress": {
+        "P1": "pressure",
+        "P2": "pressure",
+        "P3": "pressure",
+        "P4": "pressure",
+        "P5": "pressure",
+        "P6": "pressure",
+        "P7": "pressure",
+        "P8": "pressure"
+      },
+      "alternating": {
+        "P1": "baseline",
+        "P2": "pressure",
+        "P3": "baseline",
+        "P4": "pressure",
+        "P5": "baseline",
+        "P6": "pressure",
+        "P7": "baseline",
+        "P8": "pressure"
+      }
+    }
+  },
+  "gdp": {
+    "national": 10000.0,
+    "regional": {
+      "Region_A": 1000.0,
+      "Region_B": 800.0
+    }
+  },
+  "external_drivers": {
+    "Region_A": {
+      "population": 0.0,
+      "industrial_added_value": 0.0,
+      "irrigation_area": 0.0,
+      "cattle": 0.0,
+      "pigs": 0.0,
+      "poultry": 0.0
+    },
+    "Region_B": {
+      "population": 0.0,
+      "industrial_added_value": 0.0,
+      "irrigation_area": 0.0,
+      "cattle": 0.0,
+      "pigs": 0.0,
+      "poultry": 0.0
+    }
+  }
+}
